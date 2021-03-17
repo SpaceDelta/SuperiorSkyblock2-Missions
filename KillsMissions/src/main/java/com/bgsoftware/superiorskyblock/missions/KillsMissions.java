@@ -193,13 +193,7 @@ public final class KillsMissions extends Mission<KillsMissions.KillsTracker> imp
     }
 
     private int getEntityAmount(LivingEntity entity){
-        if(Bukkit.getPluginManager().isPluginEnabled("WildStacker")){
-            try {
-                return com.bgsoftware.wildstacker.api.WildStackerAPI.getEntityAmount(entity);
-            }catch (Exception ignored){}
-        }
-
-        return 1;
+        return entity.getStackSize(); // SpaceDelta
     }
 
     private boolean isMissionEntity(Entity entity){
