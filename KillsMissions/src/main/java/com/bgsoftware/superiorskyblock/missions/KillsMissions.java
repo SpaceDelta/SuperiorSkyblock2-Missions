@@ -152,13 +152,13 @@ public final class KillsMissions extends Mission<KillsMissions.KillsTracker> imp
         itemStack.setItemMeta(itemMeta);
     }
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onEntityKill(EntityDeathEvent e){
-        if(!isMissionEntity(e.getEntity()))
+        if(!isMissionEntity(e.getEntity())) {
             return;
+        }
 
         EntityDamageEvent damageCause = e.getEntity().getLastDamageCause();
-
         if(!(damageCause instanceof EntityDamageByEntityEvent))
             return;
 
@@ -192,7 +192,7 @@ public final class KillsMissions extends Mission<KillsMissions.KillsTracker> imp
         }, 2L);
     }
 
-    private int getEntityAmount(LivingEntity entity){
+    private int getEntityAmount(LivingEntity entity) {
         return entity.getStackSize(); // SpaceDelta
     }
 
