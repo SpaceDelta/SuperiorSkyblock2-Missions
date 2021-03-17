@@ -221,25 +221,6 @@ public final class BlocksMissions extends Mission<BlocksMissions.BlocksTracker> 
         }
     }
 
-    private class WildStackerListener implements Listener{
-
-        @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-        public void onBarrelUnstack(BarrelUnstackEvent e){
-            if(onlyNatural || !(e.getUnstackSource() instanceof Player))
-                return;
-
-            Block block = e.getBarrel().getBlock();
-            ItemStack barrelItem = e.getBarrel().getBarrelItem(1);
-            Material blockType = barrelItem.getType();
-
-            if(!isMissionBlock(blockType, barrelItem.getDurability()))
-                return;
-
-            handleBlockTrack((Player) e.getUnstackSource(), blockType, barrelItem.getDurability(), e.getAmount());
-        }
-
-    }
-
     private class WildToolsListener implements Listener{
 
         private final Mission<?> mission;

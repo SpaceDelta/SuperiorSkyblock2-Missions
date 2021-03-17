@@ -1,0 +1,10 @@
+rootProject.name = 'Skyblock-Missions'
+
+include 'BlocksMission'
+include 'CraftingMissions'
+include 'EnchantingMissions'
+include 'IslandMissions'
+include 'ItemsMissions'
+include 'KillsMissions'
+include 'StatisticsMissions'
+

@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+group 'com.bgsoftware'
+version '1.5.2'
+
+targetCompatibility = '11'
+sourceCompatibility = '11'
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    repositories {
+        mavenCentral()
+        maven {
+            credentials {
+                username sd_user
+                password sd_pass
+            }
+            url sd_repo
+        }
+
+        /* SuperiorSkyblock */
+        maven { url 'https://repo.bg-software.com/repository/api/' }
+    }
+
+    dependencies {
+        // Nebula
+        compileOnly group: 'net.spacedelta', name: 'nebula', version: '1.16.5-R0.1-SNAPSHOT'
+
+        /* SuperiorSkyblock */
+        compileOnly group: 'com.bgsoftware', name: 'SuperiorSkyblockAPI', version: 'latest'
+    }
+
+    shadowJar {
+        archiveFileName = "${project.name}.jar"
+    }
+
+}
+
